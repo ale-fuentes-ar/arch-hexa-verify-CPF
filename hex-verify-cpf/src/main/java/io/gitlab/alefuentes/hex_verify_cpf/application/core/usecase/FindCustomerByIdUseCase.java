@@ -1,9 +1,10 @@
 package io.gitlab.alefuentes.hex_verify_cpf.application.core.usecase;
 
 import io.gitlab.alefuentes.hex_verify_cpf.application.core.domain.Customer;
+import io.gitlab.alefuentes.hex_verify_cpf.application.ports.in.FindCustomerByIdInputPort;
 import io.gitlab.alefuentes.hex_verify_cpf.application.ports.out.FindCustomerByIdOutputPort;
 
-public class FindCustomerByIdUseCase implements FindCustomerByIdOutputPort {
+public class FindCustomerByIdUseCase implements FindCustomerByIdInputPort {
 
     private final FindCustomerByIdOutputPort findCustomerByIdOutputPort;
 

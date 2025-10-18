@@ -1,10 +1,10 @@
 plugins {
 	java
-    // --- CORRECCIÓN --- He cambiado la versión a una estable y existente
 	id("org.springframework.boot") version "3.2.6" 
 	id("io.spring.dependency-management") version "1.1.7"
 }
 
+val mapstructVersion = "1.5.5.Final"
 group = "io.gitlab.alefuentes"
 version = "0.0.1-SNAPSHOT"
 description = "Hexagonal proyect, where your goal is verify CPF of user"
@@ -25,16 +25,11 @@ repositories {
 	mavenCentral()
 }
 
-// --- INICIO DE LA SOLUCIÓN ---
-// Este bloque gestiona las versiones de las dependencias para que no tengas que especificarlas tú.
 dependencyManagement {
 	imports {
-		// Esta línea le dice a Gradle que use las versiones de Spring Cloud 2023.0.2 (compatibles con Spring Boot 3.2.x)
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:2023.0.2")
 	}
 }
-// --- FIN DE LA SOLUCIÓN ---
-
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
@@ -42,14 +37,23 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.kafka:spring-kafka")
     
-    // Ahora esta línea funcionará porque el BOM de arriba le proporciona la versión correcta
 	implementation("org.springframework.cloud:spring-cloud-starter-openfeign") 
 
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
+
+    implementation("org.mapstruct:mapstruct:${mapstructVersion}")
+    annotationProcessor("org.mapstruct:mapstruct-processor:${mapstructVersion}")
+
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
+
+	// Embedded MongoDB for tests (Flapdoodle)
+	testImplementation("de.flapdoodle.embed:de.flapdoodle.embed.mongo:4.9.2")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	testImplementation("com.tngtech.archunit:archunit-junit5:1.2.1")
 }
 
 tasks.withType<Test> {

@@ -1,0 +1,15 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+# Provide a valid URL for the Feign client used by the app under test so the
+# placeholder ${arantes.client.address.url} is resolved during test startup.
+arantes:
+  client:
+    address:
+      url: "http://localhost"
+
+# Reduce noisy Mongo driver logs during tests
+logging:
+  level:
+    "org.mongodb.driver": WARN
