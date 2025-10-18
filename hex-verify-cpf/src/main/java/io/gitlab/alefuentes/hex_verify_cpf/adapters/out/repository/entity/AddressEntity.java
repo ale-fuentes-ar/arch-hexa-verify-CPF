@@ -1,4 +1,4 @@
-package io.gitlab.alefuentes.hex_verify_cpf.adapters.out.repository.entitiy;
+package io.gitlab.alefuentes.hex_verify_cpf.adapters.out.repository.entity;
 
 import lombok.Data;
 

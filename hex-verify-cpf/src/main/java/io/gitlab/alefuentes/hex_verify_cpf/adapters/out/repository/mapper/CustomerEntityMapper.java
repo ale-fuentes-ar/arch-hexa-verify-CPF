@@ -2,7 +2,7 @@ package io.gitlab.alefuentes.hex_verify_cpf.adapters.out.repository.mapper;
 
 import org.mapstruct.Mapper;
 
-import io.gitlab.alefuentes.hex_verify_cpf.adapters.out.repository.entitiy.CustomerEntity;
+import io.gitlab.alefuentes.hex_verify_cpf.adapters.out.repository.entity.CustomerEntity;
 import io.gitlab.alefuentes.hex_verify_cpf.application.core.domain.Customer;
 
 @Mapper(componentModel = "spring")
